@@ -8,11 +8,11 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white px-6 py-16">
+      <main className="min-h-screen px-6 py-16">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl font-bold mb-4">السلة فاضية</h1>
-          <Link href="/" className="text-zinc-400 hover:text-white">
-            ← رجوع للمتجر
+          <h1 className="font-[family-name:var(--font-playfair)] text-4xl mb-6">السلة فاضية</h1>
+          <Link href="/" className="text-xs uppercase tracking-widest text-[#8a6474] hover:text-[#c2497a]">
+            ← رجوع للكتالوج
           </Link>
         </div>
       </main>
@@ -20,31 +20,29 @@ export default function CartPage() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white px-6 py-16">
+    <main className="min-h-screen px-6 py-16">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2">السلة</h1>
-        <p className="text-zinc-400 mb-10">عدد القطع: {totalItems}</p>
+        <h1 className="font-[family-name:var(--font-playfair)] text-4xl mb-2">Cart</h1>
+        <p className="text-sm text-[#8a6474] mb-10">عدد القطع: {totalItems}</p>
 
         <div className="space-y-4">
           {items.map((item) => (
             <div
               key={item.id}
-              className="flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-900 p-5"
+              className="flex items-center justify-between bg-white border border-[#f3dfe7] p-5"
             >
               <div>
-                <h2 className="font-semibold">{item.name}</h2>
-                <p className="text-sm text-zinc-400">
+                <h2 className="text-sm uppercase tracking-wider">{item.name}</h2>
+                <p className="text-xs text-[#8a6474] mt-1">
                   {item.price} ج.م × {item.quantity}
                 </p>
               </div>
 
-              <div className="flex items-center gap-4">
-                <span className="font-semibold">
-                  {item.price * item.quantity} ج.م
-                </span>
+              <div className="flex items-center gap-5">
+                <span className="text-sm">{item.price * item.quantity} ج.م</span>
                 <button
                   onClick={() => removeFromCart(item.id)}
-                  className="text-sm text-red-400 hover:text-red-300"
+                  className="text-xs uppercase tracking-wider text-[#e0527f] hover:text-[#c2497a]"
                 >
                   حذف
                 </button>
@@ -53,25 +51,28 @@ export default function CartPage() {
           ))}
         </div>
 
-        <div className="flex items-center justify-between mt-10 pt-6 border-t border-zinc-800">
+        <div className="flex items-center justify-between mt-10 pt-6 border-t border-[#f3dfe7]">
           <button
             onClick={clearCart}
-            className="text-sm text-zinc-400 hover:text-white"
+            className="text-xs uppercase tracking-wider text-[#8a6474] hover:text-[#3a1d28]"
           >
             تفريغ السلة
           </button>
-          <p className="text-xl font-bold">الإجمالي: {totalPrice} ج.م</p>
+          <p className="text-lg">الإجمالي: {totalPrice} ج.م</p>
         </div>
 
         <Link
           href="/checkout"
-          className="block w-full text-center mt-8 px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-zinc-200"
+          className="block w-full text-center mt-10 px-6 py-4 bg-[#e0527f] text-white text-sm uppercase tracking-widest hover:bg-[#c2497a] transition"
         >
           إتمام الطلب
         </Link>
 
-        <Link href="/" className="inline-block mt-8 text-zinc-400 hover:text-white">
-          ← رجوع للمتجر
+        <Link
+          href="/"
+          className="inline-block mt-8 text-xs uppercase tracking-widest text-[#8a6474] hover:text-[#c2497a]"
+        >
+          ← رجوع للكتالوج
         </Link>
       </div>
     </main>
